@@ -8,10 +8,13 @@
 // @grant        none
 // ==/UserScript==
 
-taskId = window.location.pathname.split('/')[3];
+taskId = getTaskId();
 setInterval(function(){
-    var newTaskId = window.location.pathname.split('/')[3];
+
+    var newTaskId = getTaskId();
+    console.log('new taskid',newTaskId,'taskid', taskId);
     if(taskId != newTaskId){
+
         taskId = newTaskId;
         var taskIdDiv = document.getElementById('__taskId');
 
@@ -21,7 +24,14 @@ setInterval(function(){
             taskIdDiv.setAttribute("id", "__taskId");
             logo.appendChild(taskIdDiv); 
         }
+        taskIdDiv.setAttribute('style','color:#FFF; background: #2E3C54; padding: 20px; margin:-26px;');
+        taskIdDiv.innerHTML = window.location.pathname.split('/')[3] + '<div style="font-size:9px; ">' + window.location + '</div>';
 
-        taskIdDiv.innerHTML = window.location.pathname.split('/')[3] + '<div style="font-size:9px">' + window.location + '</div>';
     }
 },1000);
+
+function getTaskId() {
+    taskID =  window.location.pathname.split('/').pop();
+    return taskID;
+
+}
