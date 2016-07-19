@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         external link jira
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @author       You
 // @match        https://bamboohr.atlassian.net/*
@@ -12,6 +12,13 @@
 (function() {
 	'use strict';
 	setInterval(function(){
-		document.querySelector('.external-link').setAttribute('target','_blank');
-	}, 500);
+		document.querySelectorAll('.external-link').forEach(addTargetBlank);
+	}, 5000);
+	$(document).click(function() {
+		document.querySelectorAll('.external-link').forEach(addTargetBlank);
+	});
 })();
+
+function addTargetBlank(element, index, array){
+	element.setAttribute('target','_blank');
+}
