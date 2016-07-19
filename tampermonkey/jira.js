@@ -10,6 +10,7 @@
 
 (function() {
 	'use strict';
-	document.querySelector('.external-link').setAttribute('target','_blank');
-    
+	setInterval(function(){
+		document.querySelector('.external-link').setAttribute('target','_blank');
+	}, 500);
 })();
