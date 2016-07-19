@@ -6,6 +6,7 @@
 // @author       You
 // @match        https://bamboohr.atlassian.net/*
 // @grant        none
+// @updateURL	 https://raw.githubusercontent.com/grabtharshammer/monkey_skripts/master/tampermonkey/jira.js
 // ==/UserScript==
 
 (function() {
